@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h>
 /**
 *main - return point
 *Description:generate a number random
@@ -8,6 +8,7 @@
 */
 	int main(void)
 {	
+	srand(time(NULL));
 	int n = rand();
 	if (n > 0) {
 	        printf("%d is positive\n", n);
