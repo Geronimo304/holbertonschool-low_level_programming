@@ -3,9 +3,9 @@
 /**
  *main - Entry Point
  *
- *Desctiption:the size of various types on the computer on which it is compiled and printed.
+ *Desctiption:the size of various types on the computer on which it is compiled
  *
- *Return 0
+ *Return:0
  *
  *
  */
