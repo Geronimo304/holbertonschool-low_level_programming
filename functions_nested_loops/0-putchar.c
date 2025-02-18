@@ -2,13 +2,13 @@
 #include <unistd.h>
 #include "main.h"
 /**
- *
- *main - Entry Point
- *
- *return:Alweys 0 (Success)
+ * main - Entry Point
+ * funtion
+ * Return: 0
  */
 
 int main(void)
+
 {
 	_putchar ('_');
 	_putchar ('p');
