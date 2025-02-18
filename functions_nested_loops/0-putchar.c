@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
-#include "_putchar.c"
+#include "main.h"
 /**
  *
  *main - Entry Point
@@ -19,5 +19,6 @@ int main(void)
 	_putchar ('a');
 	_putchar ('r');
 	_putchar ('\n');
+
 	return (0);
 }
