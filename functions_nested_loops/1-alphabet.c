@@ -1,11 +1,12 @@
 #include "main.h"
 
 /**
- * main - Entry Point
- * Description: Print the alphabet in lowercase
- * Return: 0
+ * print_alphabet - Entry Point
+ *
+ * Description:Print the alphabet in lowercase
+ *
+ * Return: Always 0
  */
-
 void print_alphabet(void)
 {
 	char alphabet[] = "abcdefghijklmnopqrstuvwxyz\n";
@@ -15,5 +16,7 @@ void print_alphabet(void)
 	{
 		_putchar(alphabet[i]);
 		i++;
+		return (0);
 	}
+
 }
