@@ -1,19 +1,19 @@
 #include "main.h"
 
 /**
- *main - Entry Point
- *
- *Return: 0
+ * main - Entry Point
+ * Description
+ * Return: 0 
  */
 
-void print_ab(void)
+void print_alphabet(void)
 {
-	char ab[] = "abcdefghijklmnopqrstuvwxyz\n";
+	char alphabet[] = "abcdefghijklmnopqrstuvwxyz\n";
 	int i= 0;
 
-	while (ab[i] != '\0')
+	while (alphabet[i] != '\0')
 	{
-		_putchar(ab[i]);
+		_putchar(alphabet[i]);
 		i++;
 	}
 }
