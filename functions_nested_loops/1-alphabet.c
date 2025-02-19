@@ -5,7 +5,6 @@
  *
  * Description:Print the alphabet in lowercase
  *
- * Return: Always 0
  */
 void print_alphabet(void)
 {
@@ -16,7 +15,6 @@ void print_alphabet(void)
 	{
 		_putchar(alphabet[i]);
 		i++;
-		return (0);
 	}
 
 }
