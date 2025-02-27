@@ -2,9 +2,9 @@
 #include <stdio.h>
 
 /**
- *
- *
- *
+ * _strlen - Entry Point
+ * @s: puntero s
+ * Return: i Always
  */
 int _strlen(char *s)
 {
