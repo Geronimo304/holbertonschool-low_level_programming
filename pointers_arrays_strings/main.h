@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+
+char *_memset(char *s, char b, unsigned int n);
 int _atoi(char *s);
 char *_strcpy(char *dest, char *src);
 int _putchar(char c);
