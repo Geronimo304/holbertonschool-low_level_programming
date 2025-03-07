@@ -8,13 +8,13 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int suma1, suma2;
+	int suma1, suma2 = 0;
 	int i;
 
 	for (i = 0; i < size; i++)
 	{
 		suma1 += a[i * size + i];
-		suma2 += a[i * size + (size - i - 1)];
+		suma2 += a[i * size + (size - 1 - i)];
 	}
 	printf("%d, %d\n", suma1, suma2);
 }
