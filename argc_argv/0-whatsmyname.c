@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 /**
- *
- *
- *
- *
+ * main - Entry Point
+ * @argc: Argument count
+ * @argv: argument vector (array of stings)
+ * Return: 0
  */
 int main(int argc, char *argv[])
 {
