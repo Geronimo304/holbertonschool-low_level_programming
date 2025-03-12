@@ -1,46 +1,47 @@
-#include "main.h"
 #include <stdlib.h>
+#include <string.h>
+
 /**
- * str_concat - Entry Point
- * @s1: pointer
- * @s2: pointer
- * Return: duplicador
+ * str_concat - Concatenates two strings.
+ * @s1: The first string.
+ * @s2: The second string.
+ *
+ * Return: A pointer to a newly allocated space in memory which contains
+ * the contents of s1, followed by the contents of s2,
+ * and null terminated.
+ * If NULL is passed, treat it as an empty string.
+ * The function returns NULL on failure.
  */
 char *str_concat(char *s1, char *s2)
 {
-	char *duplicador;
-	int rec1 = 0, i;
-	int rec2 = 0, j;
+	int i, j, leng1 = 0, leng2 = 0;
+	char *conca;
 
-	if (*s1 != '\0')
+	if (s1 == NULL)
 	{
-		for (rec1 = 0; s1[rec1]; rec1++)
-		{
-		}
+		s1 = "";
 	}
 
-	if (*s2 != '\0')
+	if (s2 == NULL)
 	{
-		for (rec2 = 0; s2[rec2]; rec2++)
-		{
-		}
+		s2 = "";
 	}
 
-	duplicador = malloc(sizeof(char) * (rec1 + rec2 + 1));
-		if (duplicador == NULL)
-		{
-			return (NULL);
-		}
+	while (s1[leng1] != '\0')
+		leng1++;
 
-	for (i = 0; i < rec1; i++)
-	{
-		duplicador[i] = s1[i];
-	}
-	for (j = 0; j < rec2; j++, i++)
-	{
-		duplicador[i] = s2[j];
-	}
-	duplicador[i] = '\0';
+	while (s2[leng2] != '\0')
+		leng2++;
 
-	return (duplicador);
+	conca = malloc((leng1 + leng2 + 1) * sizeof(char));
+	if (conca == NULL)
+		return (NULL);
+
+	for (i = 0; i < leng1; i++)
+		conca[i] = s1[i];
+	
+	for (j = 0; j < leng2; j++)
+		conca[leng1 + j] = s2[j];
+	conca[leng1 + leng2] = '\0';
+	return (conca);
 }
