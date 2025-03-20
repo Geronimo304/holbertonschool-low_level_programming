@@ -28,7 +28,8 @@ int op_div(int a, int b)
 {
 	if (b == 0)
 	{
-		exit(100);
+		printf("Error\n");
+		exit(98);
 	}
 	return(a / b);
 }
