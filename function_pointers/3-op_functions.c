@@ -38,7 +38,7 @@
 		if (b == 0)
 		{
 			printf("Error\n");
-			exit(98);
+			exit(100);
 		}
 		return(a % b);
 }
