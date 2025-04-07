@@ -2,57 +2,61 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <sys/stat.h>
 
 #define BUFFER_SIZE 1024
 
 /**
- * error_exit - Prints an error message to stderr and exits the program
- * @code: The exit code to return
- * @message: The error message to display
- * @detail: Additional details about the error
+ * error_exit - Maneja los errores y finaliza el programa con el código adecuado.
+ * @exit_code: Código de salida del error.
+ * @message: Mensaje de error que se imprimirá.
+ * @file_name: Nombre del archivo relacionado con el error.
  */
-void error_exit(int code, const char *message, const char *detail)
+void error_exit(int exit_code, const char *message, const char *file_name)
 {
-	dprintf(STDERR_FILENO, "%s %s\n", message, detail);
-	exit(code);
+	dprintf(STDERR_FILENO, "%s %s\n", message, file_name);
+	exit(exit_code);
 }
 
 /**
- * main - Copies the content of one file to another
- * @argc: The number of arguments passed to the program
- * @argv: The array of argument strings
+ * main - Copia el contenido de un archivo a otro.
+ * @argc: Número de argumentos.
+ * @argv: Array de punteros a los argumentos.
  *
- * Return: 0 on success, or the appropriate exit code on failure
+ * Return: 0 si tiene éxito.
  */
 int main(int argc, char *argv[])
 {
-	int fd_from, fd_to, rd, wr;
+	int file_from, file_to, bytes_read, bytes_written;
 	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
 		error_exit(97, "Usage: cp file_from file_to", "");
 
-	fd_from = open(argv[1], O_RDONLY);
-	if (fd_from == -1)
+	file_from = open(argv[1], O_RDONLY);
+	if (file_from == -1)
 		error_exit(98, "Error: Can't read from file", argv[1]);
 
-
-	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (fd_to == -1)
+	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	if (file_to == -1)
 		error_exit(99, "Error: Can't write to", argv[2]);
 
-
-	while ((rd = read(fd_from, buffer, BUFFER_SIZE)) > 0)
+	while ((bytes_read = read(file_from, buffer, BUFFER_SIZE)) > 0)
 	{
-		wr = write(fd_to, buffer, rd);
-		if (wr == -1 || wr != rd)
+		bytes_written = write(file_to, buffer, bytes_read);
+		if (bytes_written == -1)
 			error_exit(99, "Error: Can't write to", argv[2]);
 	}
-	if (rd == -1)
+
+	if (bytes_read == -1)
 		error_exit(98, "Error: Can't read from file", argv[1]);
-	if (close(fd_from) == -1)
+
+	if (close(file_from) == -1)
 		error_exit(100, "Error: Can't close fd", argv[1]);
-	if (close(fd_to) == -1)
+
+
+	if (close(file_to) == -1)
 		error_exit(100, "Error: Can't close fd", argv[2]);
+
 	return (0);
-}    
+}
